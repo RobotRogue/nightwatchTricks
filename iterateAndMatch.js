@@ -6,7 +6,7 @@ function findMatch(browser, randomDonation) {
     var tableDataToCompare;
     var counter = 1;
     var comparatorValue = "$" + randomDonation;
-    browser.elements('css selector', 'td', function (result) {
+    browser.elements('css selector', '#recurring-gifts-table td', function (result) {
         if (result.value) {
             tableDataToCompare = result.value;
             tableDataToCompare.forEach(function (cellValue) {
