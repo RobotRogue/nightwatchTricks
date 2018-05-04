@@ -6,6 +6,7 @@
 function findMatch(browser, randomDonation) {
     var tableDataToCompare;
     var comparatorValue = "$" + randomDonation;
+    var matchFound;
     var indexPosition = 0;
     browser.elements('css selector', '#recurring-gifts-table tr', function (result) {
         if (result.value) {
@@ -14,7 +15,11 @@ function findMatch(browser, randomDonation) {
                 browser.elementIdText(cellValue.ELEMENT, function (cellValueText) {
                     if (cellValueText.value.includes(comparatorValue)) {
                         console.log("##### Found match of: " + comparatorValue + " to... " + cellValueText.value + " at position " + indexPosition + " #####");
-                        return (indexPosition); // TODO: HOW DO I EXPORT THIS AS A VARIABLE THAT MY TEST CAN USE?
+                        matchFound = true;
+                        return {
+                            matchFound: matchFound,
+                            indexPosition: indexPosition
+                        };
                     } else {
                         console.log("##### NO MATCH FOUND!! #####");
                     }
