@@ -13,9 +13,12 @@ function findMatch(browser, randomDonation) {
                 counter++;
                 browser.elementIdText(cellValue.ELEMENT, function (cellValueText) {
                     if (cellValueText.value == comparatorValue) {
-                        console.log("Comparing: " + comparatorValue + " to... " + cellValueText.value);
-                        console.log('I have found the matching random donation value.')
+                        console.log("Found match of: " + comparatorValue + " to... " + cellValueText.value);
                         console.log(counter); // Ideally this is the <td> index where the data was matched. Untested.
+                        counter++;
+                    } else {
+                        console.log(counter);
+                        counter++;
                     }
                 })
             })
